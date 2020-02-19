@@ -1,0 +1,143 @@
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .aklogo {
+    width: 17%;
+    height: auto;
+  }
+  
+  .logo {
+    width: 22%;
+  }
+  
+  .logout_btn {
+    color: #fff;
+  }
+  
+  .background {
+    background-color:black;
+    width: 100%;
+    color: #fff;
+    position: fixed;
+    z-index: 999;
+  }
+  
+  .mr-15 {
+    margin-right: 20%;
+    margin-left: 7%;
+  }
+  
+  .in_br {
+    background-color: #3e4f5f;
+    border: 0px;
+    border-radius: 20px;
+    color: #fff;
+  }
+  
+  
+  .headerheight {
+    height: 56px;
+  }
+  
+  .active {
+  
+    border: 1px solid black !important;
+    background-color: #54B847;
+    
+  }
+  
+  .fa-sign-out {
+    font-size: 24px;
+    color: #d9d9d9;
+    padding: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+  }
+  
+  .shadow {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+  }
+  
+  
+  
+  
+  
+  
+  .example-spacer {
+    flex: 1 auto;
+  }
+  
+  .nav-link {
+    color: white;
+    cursor: pointer;
+   ;
+  }
+  
+  ::ng-deep .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    height: 55px !important;
+  }
+  
+  ::ng-deep .mat-toolbar-multiple-rows {
+    min-height: 0px !important;
+  }
+  
+  /* .active{
+      background-color: #fafafa;
+      color: #000;
+      border: 0px solid #fff;
+      font-weight: 600;
+  } */
+  
+  ul li {
+    list-style: none;
+    
+  }
+  
+  ul li:first-child {
+    margin: 1.0rem 0 0 0;
+    
+  }
+  
+  ul li:last-child {
+    margin: 0 0 2rem 0;
+  }
+  
+  .example-container {
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  .example-sidenav {
+    background:grey;
+    color: #fff;
+    margin-right: 10px;
+    height: 100%;
+    margin-top: 4.1%;
+    position: fixed;
+    z-index: 999;
+  }
+  
+  .sideNavRow {
+    padding: 0;
+    min-height: 100vh;
+  }
+  
+  .nav-item {
+    padding: 10px 0px 0px 0px;
+  }
+  
+  /* 
+  @media only screen and (max-width: 736px) and (orientation:portrait) {
+      mat-header-row, mat-row {
+       width: 200%;  
+      }
+  
+    } */
+  
+  
