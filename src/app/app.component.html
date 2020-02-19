@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row headerheight">
-    <mat-toolbar class="background shadow">
+    <mat-toolbar class="background">
       <mat-toolbar-row>
         <button *ngIf="showToggle" mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
@@ -12,12 +12,12 @@
     <div class="col-md-12 sideNavRow ">
       <mat-drawer-container class="example-container " autosize>
         <mat-drawer  #drawer class="example-sidenav " mode="side">
-          <ul class="nav flex-column margins">
+          <ul class="nav flex-column margins pading_style">
             <li class="nav-item" *ngFor="let item of sidenavElements">
               <div class="nav-link" [ngClass]="{'active':item.id==tabId}" routerLinkActive="active"
                 [routerLink]="[item.routerLink]" href="javascript:void(0)" (click)="tabId=item.id;decrease();">
-                <span style="margin-left: 12px;">{{expandSideNav?item.name:''}}</span>&nbsp;<span style="float:right;">
-                </span>
+                <span><mat-icon md-list-icon>{{item.icon}}</mat-icon>
+                </span> <span >{{item.name}}</span>
               </div>
             </li>
           </ul>

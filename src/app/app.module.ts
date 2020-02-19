@@ -10,12 +10,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeComponent } from './employee/employee.component';
 import { DepartmentComponent } from './department/department.component';
+import { MatSidenavModule } from '@angular/material';
+import { TableModule } from 'primeng/table';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    
   ],
   imports: [
     MatModule,
@@ -24,7 +30,11 @@ import { DepartmentComponent } from './department/department.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    TableModule,
+    CdkTableModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

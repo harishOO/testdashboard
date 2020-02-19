@@ -22,13 +22,12 @@ export class AppComponent {
       }
     });
     this.sidenavElements = [
-      { id: 1, name: 'Department', routerLink: "/department" },
-      { id: 2, name: 'Employee', routerLink: "/customers" },
+      { id: 1, name: 'Department', routerLink: "/department",icon: "assignment" },
+      { id: 2, name: 'Employee', routerLink: "/employee",icon: "person" },
     ];
   }
 
   ngOnInit(): void {
-    debugger;
     this.sidenav.open();
     this.sidenavService.emitShowSideNav(true);
 
