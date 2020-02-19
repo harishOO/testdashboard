@@ -54,4 +54,29 @@ export class TestserviceService {
         catchError(this.handleError)
       );
   }
+
+  editDepartment(data) {
+    let url = `${this.baseUrl}designations/${data.id}`;
+    let headers = this.postHeaders();
+    return this.http.patch(url, data, { headers: headers })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  //Toast Message
+  openSnackBar(message: string, action: string, className?: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+      panelClass: [className]
+    });
+  }
+
+  deleteDepts(id) {
+    let url = `${this.baseUrl}designations/${id}`;
+    let headers = this.postHeaders();
+    return this.http.delete(url, { headers: headers }).pipe(
+      catchError(this.handleError)
+    )
+  }
 }
