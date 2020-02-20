@@ -25,9 +25,9 @@ export class EmployeeComponent implements OnInit {
   
   ngOnInit() {
     this.cols = [
-      {field: 'emp', header: 'Employee Name'},
-      { field: 'dept', header: 'Deprtment' },
-      { field: 'date', header: 'Date & Time ' },
+      {field: 'name', header: 'Employee Name'},
+      { field: 'designation', header: 'Department' },
+      { field: 'hiredate', header: 'Create Date' },
       { field: '', header: 'Action' },
     ];
     this.getDepartment();
@@ -40,25 +40,37 @@ export class EmployeeComponent implements OnInit {
     })
   }
 
-  editform(data){
+  editRow(data){
     this.isEdit = true;
     this.name = data.name;
-    this.dept = data.designationId;
-    this.hiredate = data.hiredate;
+    this.dept = data.designation;
+    this.hiredate = new Date(data.hiredate);
     this.id = data.id;
   }
+
+  clear(){
+    this.isEdit = false;
+    this.name = "";
+    this.dept = "";
+    this.hiredate = "";
+    this.id = "";
+
+  }
+
   saveEmps(){
     if(!this.isEdit){
-      let inObj = { name: this.empname, hiredate: this.hiredate, designationId: this.departSelected.id};
+      let inObj = { name: this.name, hiredate: this.hiredate, designationId: this.dept.id};
       this.tservice.postEmp(inObj).subscribe(res=>{
         this.tservice.openSnackBar("Saved ", "Successfuly");
+        this.clear();
         this.getEmployes();
         console.log(res);
       })
     }else{
-      let inObj = { name: this.empname, hiredate: this.hiredate, designationId: this.departSelected.id, id:this.id};
+      let inObj = { name: this.name, hiredate: this.hiredate, designationId: this.dept.id, id:this.id};
       this.tservice.PatchEmp(inObj).subscribe(res=>{
         this.tservice.openSnackBar("Updated ", "Successfuly");
+        this.clear();
         this.getEmployes();
         console.log(res);
       })
@@ -66,23 +78,13 @@ export class EmployeeComponent implements OnInit {
 
   }
   getEmployes(){
-    let obj = { dept:'',date : '', emp:''};
     this.tservice.getEmp().subscribe(res=>{
       let data : any = res;
-      data.filter(ele=>{
-            obj.emp = ele.name;
-            obj.date = ele.hiredate;
-            this.depts.filter(element=>{
-              if(element.id == ele.designationId){
-                obj.dept = element.name;
-              }
-            })
-      });
-      this.empValues.push(obj); 
+      this.empValues = data;
     })
   }
   deleteRow(obj) {
-    this.tservice.deleteDepts(obj.id).subscribe(res => {
+    this.tservice.deleteEmp(obj.id).subscribe(res => {
       this.tservice.openSnackBar("Deleted ", "Successfuly");
       this.getEmployes();
     });

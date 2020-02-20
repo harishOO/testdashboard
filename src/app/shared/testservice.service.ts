@@ -62,7 +62,7 @@ export class TestserviceService {
     )
   }
   getEmp(){
-    let url = `${this.baseUrl}employees`;
+    let url = `${this.baseUrl}employees?filter[include]=designation`;
     return this.http.get(url).pipe(
       catchError(this.handleError),
     )}
@@ -98,6 +98,14 @@ export class TestserviceService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  deleteEmp(id){
+    let url = `${this.baseUrl}employees/${id}`;
+    let headers = this.postHeaders();
+    return this.http.delete(url, { headers: headers }).pipe(
+      catchError(this.handleError)
+    )
   }
   
 }

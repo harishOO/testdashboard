@@ -12,18 +12,23 @@ export class DepartmentComponent implements OnInit {
 
   name: any;
   dataSource: MatTableDataSource<depts>;;
-  data: any; isEdit: boolean;
-  columns = [
-    { columnDef: 'name', header: 'Department', cell: (element: any) => `${element.name}` },
-    { columnDef: 'timestamp', header: 'Create Date', cell: (element: any) => `${element.timestamp}` },
-    { columnDef: 'Action', header: 'Action', cell: (element: any) => `` }
-  ];
-  displayedColumns = this.columns.map(c => c.columnDef);
+  data: any; isEdit: boolean; cols: any;
+  // columns = [
+  //   { columnDef: 'name', header: 'Department', cell: (element: any) => `${element.name}` },
+  //   { columnDef: 'timestamp', header: 'Create Date', cell: (element: any) => `${element.timestamp}` },
+  //   { columnDef: 'Action', header: 'Action', cell: (element: any) => `` }
+  // ];
+  // displayedColumns = this.columns.map(c => c.columnDef);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(public tservice: TestserviceService) { }
 
   ngOnInit() {
+    this.cols = [
+      { field: 'name', header: 'Department' },
+      { field: 'timestamp', header: 'Create Date' },
+      { field: 'Action', header: 'Action' }
+    ];
     this.getDepts();
   }
 
@@ -32,6 +37,8 @@ export class DepartmentComponent implements OnInit {
       let obj = { name: this.name, timestamp: new Date() }
       this.tservice.postDepartment(obj).subscribe(res => {
         this.getDepts();
+        this.tservice.openSnackBar("Saved ", "Successfuly");
+
       })
     }
     else {
@@ -46,7 +53,7 @@ export class DepartmentComponent implements OnInit {
   getDepts() {
     this.tservice.departmentlist().subscribe(res => {
       this.data = res;
-      this.dataSource = new MatTableDataSource(this.data);
+      // this.dataSource = new MatTableDataSource(this.data);
 
     });
   }

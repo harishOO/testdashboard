@@ -1,25 +1,28 @@
 <div class="container">
     <div class="card p-3 mt-2">
         <div class="row">
-                <div class="col-md-3 text-center">
-                    <input  placeholder="Empolyee Name"  [(ngModel)]="empname" class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-                </div>
-                <div class="col-md-3 text-center">
-                    <p-calendar [(ngModel)]="hiredate" [showIcon]="true"></p-calendar>
-                </div>
-                <div class="col-md-3 text-center">
-                    <p-dropdown [options]="depts" [(ngModel)]="departSelected" placeholder="Select a Brand" optionLabel="name"></p-dropdown>
-                </div>
-                <div class="col-md-3 text-center">
-                    <button class="save_btn" (click)="saveEmps()">{{isEdit?'Update':'Save'}}</button>
-                </div>
+            <div class="col-md-3 text-center">
+                <input placeholder="Empolyee Name" [(ngModel)]="name"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+            </div>
+            <div class="col-md-3 text-center">
+                <p-calendar [(ngModel)]="hiredate" [showIcon]="true"></p-calendar>
+            </div>
+            <div class="col-md-3 text-center">
+                <p-dropdown [options]="depts" [(ngModel)]="dept" placeholder="Select a Department"
+                    optionLabel="name"></p-dropdown>
+            </div>
+            <div class="col-md-3 text-center">
+                <button class="save_btn" (click)="saveEmps()">{{isEdit?'Update':'Save'}}</button>
+                &nbsp;&nbsp; <button class="save_btn" (click)="clear()">Clear</button>
+            </div>
 
         </div>
     </div>
 
     <div class="mt-2">
 
-        <p-table [columns]="cols"  [value]="empValues" [paginator]="true" [rows]="10" >
+        <p-table [columns]="cols" [value]="empValues" [paginator]="true" [rows]="10">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
@@ -30,17 +33,26 @@
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr [pSelectableRow]="rowData">
                     <td *ngFor="let col of columns">
-                        <span *ngIf="col.header != 'Action'">
-                            {{rowData[col.field]}}    
+                        <span
+                            *ngIf="col.header != 'Department' && col.header != 'Action' && col.header != 'Create Date' ">
+                            {{rowData[col.field]}}
+                        </span>
+                        <span *ngIf="col.header =='Department'">
+                            {{rowData[col.field]["name"]}}
+                        </span>
+                        <span *ngIf="col.header == 'Create Date'">
+                            {{rowData[col.field]| date:"medium"}}
                         </span>
                         <span *ngIf="col.header == 'Action'">
-                            <i class="fa fa-pencil" (click)="editform(row)"></i>
-                            <i class="fa fa-trash-o" (click)="deleteRow(row.id)"></i>
+                            <button mat-raised-button color="accent"
+                               (click)="editRow(rowData)">Edit</button>&nbsp;&nbsp;
+
+                            <button mat-raised-button color="warn" (click)="deleteRow(rowData)">Delete</button>
                         </span>
                     </td>
                 </tr>
             </ng-template>
         </p-table>
     </div>
-    
+
 </div>
