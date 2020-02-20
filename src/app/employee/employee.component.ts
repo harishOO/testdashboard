@@ -16,6 +16,10 @@ export class EmployeeComponent implements OnInit {
   empname: any;
   hiredate: any;
   empValues: any = [];
+  isEdit: boolean = false;
+  name: any;
+  dept: any;
+  id: any;
   constructor(private fb: FormBuilder, public tservice:TestserviceService) { }
 
   
@@ -35,12 +39,31 @@ export class EmployeeComponent implements OnInit {
       console.log(res)
     })
   }
+
+  editform(data){
+    this.isEdit = true;
+    this.name = data.name;
+    this.dept = data.designationId;
+    this.hiredate = data.hiredate;
+    this.id = data.id;
+  }
   saveEmps(){
-    let inObj = { name: this.empname, hiredate: this.hiredate, designationId: this.departSelected.id};
-    console.log(inObj);
-    this.tservice.postEmp(inObj).subscribe(res=>{
-      console.log(res);
-    })
+    if(!this.isEdit){
+      let inObj = { name: this.empname, hiredate: this.hiredate, designationId: this.departSelected.id};
+      this.tservice.postEmp(inObj).subscribe(res=>{
+        this.tservice.openSnackBar("Saved ", "Successfuly");
+        this.getEmployes();
+        console.log(res);
+      })
+    }else{
+      let inObj = { name: this.empname, hiredate: this.hiredate, designationId: this.departSelected.id, id:this.id};
+      this.tservice.PatchEmp(inObj).subscribe(res=>{
+        this.tservice.openSnackBar("Updated ", "Successfuly");
+        this.getEmployes();
+        console.log(res);
+      })
+    }
+
   }
   getEmployes(){
     let obj = { dept:'',date : '', emp:''};
@@ -57,5 +80,12 @@ export class EmployeeComponent implements OnInit {
       });
       this.empValues.push(obj); 
     })
+  }
+  deleteRow(obj) {
+    this.tservice.deleteDepts(obj.id).subscribe(res => {
+      this.tservice.openSnackBar("Deleted ", "Successfuly");
+      this.getEmployes();
+    });
+
   }
 }

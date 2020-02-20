@@ -2,10 +2,12 @@
     <div class="card p-3 mt-2">
         <div class="row">
             <div class="col-md-6 text-right">
-                <input pinputtext="" placeholder="Enter Department" [(ngModel)]="name" type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+                <input pinputtext="" placeholder="Enter Department" [(ngModel)]="name" type="text"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
             </div>
             <div class="col-md-6 text-left">
-                <button class="save_btn" (click)="saveDepts()">Save</button>
+                <button class="save_btn" (click)="saveDepts()"> {{isEdit?'Update':'Submit'}}</button>
+               &nbsp;&nbsp; <button class="save_btn" (click)="clear()">Clear</button>
             </div>
         </div>
     </div>
@@ -14,11 +16,15 @@
             <ng-container *ngFor="let column of columns" [cdkColumnDef]="column.columnDef">
                 <mat-header-cell *cdkHeaderCellDef><span class="thwidth">{{column.header}}</span></mat-header-cell>
                 <mat-cell *cdkCellDef="let row; let i = index">
-                    {{column.cell(row)}}
-                  
+                    <span *ngIf="column.header != 'Create Date' && column.header != 'Action'">
+                        {{column.cell(row)}}</span>
+
+                    <span *ngIf="column.header == 'Create Date'">
+                        {{column.cell(row) | date:"medium"}}
+                    </span>
                     <span *ngIf="column.header == 'Action'">
-                        <i class="fa fa-pencil" (click)="editform(row)"></i>
-                        <i class="fa fa-trash-o" (click)="deleteRow(row.id)"></i>
+                        <label (click)="editDepts(row)">Edit</label>&nbsp;
+                        <label (click)="delete(row)">Delete</label>
                     </span>
                 </mat-cell>
             </ng-container>
@@ -26,5 +32,5 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </table>
     </div>
-    
+
 </div>

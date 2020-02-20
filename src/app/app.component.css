@@ -98,6 +98,7 @@
   
   ul li {
     list-style: none;
+    border-bottom: 1px solid #39a3f4;
     
   }
   
@@ -132,7 +133,7 @@
   }
   
   .nav-item {
-    padding: 10px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
   }
   /* .pading_style{
     padding-left: 14px !important;

@@ -16,8 +16,7 @@
             <li class="nav-item" *ngFor="let item of sidenavElements">
               <div class="nav-link" [ngClass]="{'active':item.id==tabId}" routerLinkActive="active"
                 [routerLink]="[item.routerLink]" href="javascript:void(0)" (click)="tabId=item.id;decrease();">
-                <span><mat-icon md-list-icon>{{item.icon}}</mat-icon>
-                </span> <span >{{item.name}}</span>
+                 <span >{{item.name}}</span><span class="mt-1"><mat-icon md-list-icon class="mt-2">{{item.icon}}</mat-icon></span>
               </div>
             </li>
           </ul>

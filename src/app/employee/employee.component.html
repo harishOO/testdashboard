@@ -11,7 +11,7 @@
                     <p-dropdown [options]="depts" [(ngModel)]="departSelected" placeholder="Select a Brand" optionLabel="name"></p-dropdown>
                 </div>
                 <div class="col-md-3 text-center">
-                    <button class="save_btn" (click)="saveEmps()">Save</button>
+                    <button class="save_btn" (click)="saveEmps()">{{isEdit?'Update':'Save'}}</button>
                 </div>
 
         </div>
@@ -19,7 +19,7 @@
 
     <div class="mt-2">
 
-        <p-table [columns]="cols"  [value]="empValues" [paginator]="true" [rows]="10" selectionMode="single">
+        <p-table [columns]="cols"  [value]="empValues" [paginator]="true" [rows]="10" >
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">

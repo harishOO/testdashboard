@@ -12,7 +12,7 @@ export class DepartmentComponent implements OnInit {
 
   name: any;
   dataSource: MatTableDataSource<depts>;;
-  data: any;
+  data: any; isEdit: boolean;
   columns = [
     { columnDef: 'name', header: 'Department', cell: (element: any) => `${element.name}` },
     { columnDef: 'timestamp', header: 'Create Date', cell: (element: any) => `${element.timestamp}` },
@@ -28,10 +28,19 @@ export class DepartmentComponent implements OnInit {
   }
 
   saveDepts() {
-    let obj = { name: this.name, timestamp: new Date() }
-    this.tservice.postDepartment(obj).subscribe(res => {
-      this.getDepts();
-    })
+    if (!this.isEdit) {
+      let obj = { name: this.name, timestamp: new Date() }
+      this.tservice.postDepartment(obj).subscribe(res => {
+        this.getDepts();
+      })
+    }
+    else {
+      let eobj = { name: this.name, id: this.id }
+      this.tservice.editDepartment(eobj).subscribe(res => {
+        this.tservice.openSnackBar("Updated ", "Successfuly");
+        this.getDepts();
+      })
+    }
   }
 
   getDepts() {
@@ -40,6 +49,27 @@ export class DepartmentComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.data);
 
     });
+  }
+
+  id: any;
+  editDepts(obj) {
+    this.name = obj.name; this.id = obj.id
+    this.isEdit = true;
+
+  }
+
+  clear() {
+    this.name = "";
+    this.isEdit = false;
+  }
+
+
+  delete(obj) {
+    this.tservice.deleteDepts(obj.id).subscribe(res => {
+      this.tservice.openSnackBar("Deleted ", "Successfuly");
+      this.getDepts();
+    });
+
   }
 
 }
