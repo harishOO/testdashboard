@@ -1,39 +1,25 @@
 <div class="container">
     <div class="card p-3 mt-2">
         <div class="row">
-            <form [formGroup]="emplyoeForm">
-                <div class="col-md-4 text-right">
-                    <input pinputtext="" placeholder="Empolyee Name" type="text" formControlName="name" class="form-control ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+                <div class="col-md-3 text-center">
+                    <input  placeholder="Empolyee Name"  [(ngModel)]="empname" class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
                 </div>
-                <div class="col-md-4 text-center">
-                    <input pinputtext="" placeholder="Joining Date" type="text" formControlName="hiredate" class="form-controlui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+                <div class="col-md-3 text-center">
+                    <p-calendar [(ngModel)]="hiredate" [showIcon]="true"></p-calendar>
                 </div>
-                <div class="col-md-4 text-left">
-                    <button class="save_btn">Save</button>
+                <div class="col-md-3 text-center">
+                    <p-dropdown [options]="depts" [(ngModel)]="departSelected" placeholder="Select a Brand" optionLabel="name"></p-dropdown>
                 </div>
-            </form>
+                <div class="col-md-3 text-center">
+                    <button class="save_btn" (click)="saveEmps()">Save</button>
+                </div>
 
         </div>
     </div>
 
     <div class="mt-2">
-        <p-table [value]="cars">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>Department</th>
-                    <th>Date & Time</th>
-                    <th>Action</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-car>
-                <tr>
-                    <td>Computer</td>
-                    <td>11/02/2020</td>
-                    <td>Edit</td>
-                </tr>
-            </ng-template>
-        </p-table>
-        <!-- <p-table [columns]="cols"  [value]="" [paginator]="true" [rows]="10" selectionMode="single">
+
+        <p-table [columns]="cols"  [value]="empValues" [paginator]="true" [rows]="10" selectionMode="single">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
@@ -44,11 +30,17 @@
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr [pSelectableRow]="rowData">
                     <td *ngFor="let col of columns">
-                        {{rowData[col.field]}}
+                        <span *ngIf="col.header != 'Action'">
+                            {{rowData[col.field]}}    
+                        </span>
+                        <span *ngIf="col.header == 'Action'">
+                            <i class="fa fa-pencil" (click)="editform(row)"></i>
+                            <i class="fa fa-trash-o" (click)="deleteRow(row.id)"></i>
+                        </span>
                     </td>
                 </tr>
             </ng-template>
-        </p-table> -->
+        </p-table>
     </div>
     
 </div>

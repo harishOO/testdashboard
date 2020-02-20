@@ -54,4 +54,17 @@ export class TestserviceService {
         catchError(this.handleError)
       );
   }
+  postEmp(dataObj){
+    let url = `${this.baseUrl}employees`;
+    let headers = this.postHeaders();
+    return this.http.post(url,dataObj,{headers:headers}).pipe(
+      catchError(this.handleError),
+    )
+  }
+  getEmp(){
+    let url = `${this.baseUrl}employees`;
+    return this.http.get(url).pipe(
+      catchError(this.handleError),
+    )
+  }
 }

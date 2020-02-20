@@ -14,7 +14,8 @@ import { MatSidenavModule } from '@angular/material';
 import { TableModule } from 'primeng/table';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material';
-
+import {DropdownModule} from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatTableModule } from '@angular/material';
     
   ],
   imports: [
+    CalendarModule,
     MatModule,
     FormsModule,
     HttpClientModule,
@@ -34,7 +36,8 @@ import { MatTableModule } from '@angular/material';
     MatSidenavModule,
     TableModule,
     CdkTableModule,
-    MatTableModule
+    MatTableModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

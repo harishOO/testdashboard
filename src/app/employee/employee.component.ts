@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TestserviceService } from "../shared/testservice.service";
+import { element } from 'protractor';
 
 
 @Component({
@@ -9,26 +11,51 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class EmployeeComponent implements OnInit {
   cols:any = [];
-  dept : any = [];
-  cars: any = [];
-  emplyoeForm:FormGroup
-
-  constructor(private fb: FormBuilder) { }
+  depts : any ;
+  departSelected: any;
+  empname: any;
+  hiredate: any;
+  empValues: any = [];
+  constructor(private fb: FormBuilder, public tservice:TestserviceService) { }
 
   
   ngOnInit() {
     this.cols = [
-      { field: '', header: 'Deprtment' },
-      { field: '', header: 'Date & Time ' },
+      {field: 'emp', header: 'Employee Name'},
+      { field: 'dept', header: 'Deprtment' },
+      { field: 'date', header: 'Date & Time ' },
       { field: '', header: 'Action' },
     ];
-    this.initiateForm();
+    this.getDepartment();
+    this.getEmployes();
   }
-  initiateForm(){
-    this.emplyoeForm = this.fb.group({
-      name:['',Validators.required],
-      hiredate:['',Validators.required]
+  getDepartment(){
+    this.tservice.departmentlist().subscribe(res=>{
+      this.depts = res;
+      console.log(res)
     })
   }
-
+  saveEmps(){
+    let inObj = { name: this.empname, hiredate: this.hiredate, designationId: this.departSelected.id};
+    console.log(inObj);
+    this.tservice.postEmp(inObj).subscribe(res=>{
+      console.log(res);
+    })
+  }
+  getEmployes(){
+    let obj = { dept:'',date : '', emp:''};
+    this.tservice.getEmp().subscribe(res=>{
+      let data : any = res;
+      data.filter(ele=>{
+            obj.emp = ele.name;
+            obj.date = ele.hiredate;
+            this.depts.filter(element=>{
+              if(element.id == ele.designationId){
+                obj.dept = element.name;
+              }
+            })
+      });
+      this.empValues.push(obj); 
+    })
+  }
 }
