@@ -37,6 +37,7 @@ export class DepartmentComponent implements OnInit {
       let obj = { name: this.name, timestamp: new Date() }
       this.tservice.postDepartment(obj).subscribe(res => {
         this.getDepts();
+        this.clear();
         this.tservice.openSnackBar("Saved ", "Successfuly");
 
       })
@@ -45,6 +46,7 @@ export class DepartmentComponent implements OnInit {
       let eobj = { name: this.name, id: this.id }
       this.tservice.editDepartment(eobj).subscribe(res => {
         this.tservice.openSnackBar("Updated ", "Successfuly");
+        this.clear();
         this.getDepts();
       })
     }

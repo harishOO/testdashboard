@@ -6,7 +6,7 @@
                     class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
             </div>
             <div class="col-md-3 text-center">
-                <p-calendar [(ngModel)]="hiredate" [showIcon]="true"></p-calendar>
+                <p-calendar [(ngModel)]="hiredate" placeholder="Hire Date" [showIcon]="true"></p-calendar>
             </div>
             <div class="col-md-3 text-center">
                 <p-dropdown [options]="depts" [(ngModel)]="dept" placeholder="Select a Department"
@@ -34,14 +34,14 @@
                 <tr [pSelectableRow]="rowData">
                     <td *ngFor="let col of columns">
                         <span
-                            *ngIf="col.header != 'Department' && col.header != 'Action' && col.header != 'Create Date' ">
+                            *ngIf="col.header != 'Department' && col.header != 'Action' && col.header != 'Hire Date' ">
                             {{rowData[col.field]}}
                         </span>
                         <span *ngIf="col.header =='Department'">
                             {{rowData[col.field]["name"]}}
                         </span>
-                        <span *ngIf="col.header == 'Create Date'">
-                            {{rowData[col.field]| date:"medium"}}
+                        <span *ngIf="col.header == 'Hire Date'">
+                            {{rowData[col.field]| date:"mediumDate"}}
                         </span>
                         <span *ngIf="col.header == 'Action'">
                             <button mat-raised-button color="accent"

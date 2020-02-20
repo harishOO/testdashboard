@@ -96,11 +96,11 @@
       font-weight: 600;
   } */
   
-  ul li {
+  /* ul li {
     list-style: none;
     border-bottom: 1px solid #39a3f4;
     
-  }
+  } */
   
   ul li:first-child {
     margin: 1.0rem 0 0 0;

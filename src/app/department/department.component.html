@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="mt-2">
         <!-- <table mat-table [dataSource]="dataSource" role="grid" class="w-100">
             <ng-container *ngFor="let column of columns" [cdkColumnDef]="column.columnDef">
                 <mat-header-cell *cdkHeaderCellDef><span class="thwidth">{{column.header}}</span></mat-header-cell>
@@ -46,7 +46,7 @@
                             {{rowData[col.field]}}
                         </span>
                         <span *ngIf="col.header == 'Create Date'">
-                            {{rowData[col.field]| date:"medium"}}
+                            {{rowData[col.field]| date:"mediumDate"}}
                         </span>
                         <span *ngIf="col.header == 'Action'">
                             <button mat-raised-button color="accent"

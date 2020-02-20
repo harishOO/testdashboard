@@ -27,7 +27,7 @@ export class EmployeeComponent implements OnInit {
     this.cols = [
       {field: 'name', header: 'Employee Name'},
       { field: 'designation', header: 'Department' },
-      { field: 'hiredate', header: 'Create Date' },
+      { field: 'hiredate', header: 'Hire Date' },
       { field: '', header: 'Action' },
     ];
     this.getDepartment();

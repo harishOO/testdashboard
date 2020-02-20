@@ -2,9 +2,7 @@
   <div class="row headerheight">
     <mat-toolbar class="background">
       <mat-toolbar-row>
-        <button *ngIf="showToggle" mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
+        <label>Test</label>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
@@ -14,9 +12,9 @@
         <mat-drawer  #drawer class="example-sidenav " mode="side">
           <ul class="nav flex-column margins pading_style">
             <li class="nav-item" *ngFor="let item of sidenavElements">
-              <div class="nav-link" [ngClass]="{'active':item.id==tabId}" routerLinkActive="active"
+              <div class="nav-link"  routerLinkActive="active"
                 [routerLink]="[item.routerLink]" href="javascript:void(0)" (click)="tabId=item.id;decrease();">
-                 <span >{{item.name}}</span><span class="mt-1"><mat-icon md-list-icon class="mt-2">{{item.icon}}</mat-icon></span>
+                 <span >{{item.name}}</span><span class="mt-1"></span>
               </div>
             </li>
           </ul>
