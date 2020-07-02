@@ -1,13 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TestserviceService } from "../shared/testservice.service";
-import { element } from 'protractor';
+import { trigger, transition, animate, style } from '@angular/animations';
 
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css'],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ transform: 'translateY(-100%)' }),
+        animate('500ms ease-in', style({ transform: 'translateY(0%)' }))
+      ]),
+      transition(':leave', [
+        animate('500ms ease-in', style({ transform: 'translateY(-100%)' }))
+      ])
+    ])
+  ]
 })
 export class EmployeeComponent implements OnInit {
   cols:any = [];
@@ -25,10 +36,12 @@ export class EmployeeComponent implements OnInit {
   
   ngOnInit() {
     this.cols = [
-      {field: 'name', header: 'Employee Name'},
-      { field: 'designation', header: 'Department' },
-      { field: 'hiredate', header: 'Hire Date' },
-      { field: '', header: 'Action' },
+      {field: 'first_name', header: 'First Name'},
+      { field: 'last_name', header: 'Last Name' },
+      { field: 'address', header: 'Address' },
+      { field: 'city', header: 'City' },
+      { field: 'state', header: 'State' },
+      { field: 'order_total', header: 'Order Total' },
     ];
     this.getDepartment();
     this.getEmployes();
