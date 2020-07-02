@@ -22,8 +22,7 @@ export class AppComponent {
       }
     });
     this.sidenavElements = [
-      { id: 1, name: 'Department', routerLink: "/department",icon: "assignment" },
-      { id: 2, name: 'Employee', routerLink: "/employee",icon: "person" },
+      { id: 1, name: 'Customers', routerLink: "/customer",icon: "person" },
     ];
   }
 
