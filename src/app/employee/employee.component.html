@@ -1,51 +1,58 @@
 <div class="container">
     <div class="card p-3 mt-2">
-        <div class="col-md-6 mb-2">
-            <label class="d-block">First Name</label>
-            <input placeholder="First Name"
-                class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+        <div class="row col-md-12">
+            <div class="col-md-6 mb-2 task">
+                <label class="d-block">First Name</label>
+                <input placeholder="First Name"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+            </div>
+            <div class="col-md-6 mb-2 task">
+                <label class="d-block">Last Name</label>
+                <input placeholder="Last Name"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+            </div>
+    
+            <div class="col-md-6 mb-2">
+                <label class="d-block">Gender</label>
+                <span class="d-block">
+                    <input placeholder="First Name" type="radio"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget"><span >Male</span>
+                </span>
+                
+                <span class="d-block">
+                    <input placeholder="First Name" type="radio"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget"><span >Female</span> 
+                </span> 
+            </div>
+            <div class="col-md-6 mb-2 task">
+                <label class="d-block">Email</label>
+                <input placeholder="Email" type="email"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+            </div>
+            <div class="col-md-6 mb-2 task">
+                <label class="d-block">Address</label>
+                <input placeholder="address" type="text"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+            </div>
+            <div class="col-md-6 mb-2 task">
+                <label class="d-block">City</label>
+                <input placeholder="City" type="text"
+                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+            </div>
+            <div class="col-md-6 mb-2 task">
+                <label class="d-block">State</label>
+                <select placeholder="select City" class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
+                    <option>Guntur</option>
+                    <option>Vijayawada</option>
+                    <option>Vizag</option>
+                </select>
+            </div>
+            <div class="col-md-3 text-center mt-4">
+                <button class="save_btn" (click)="saveEmps()">{{isEdit?'Update':'Save'}}</button>
+                &nbsp;&nbsp; <button class="save_btn" (click)="clear()">Clear</button>
+            </div>
         </div>
-        <div class="col-md-6 mb-2">
-            <label class="d-block">Last Name</label>
-            <input placeholder="Last Name"
-                class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-        </div>
-
-        <div class="col-md-6 mb-2">
-            <label class="d-block">Gender</label>
-            <span class="d-block">
-                <input placeholder="First Name" type="radio"
-                class="ui-inputtext ui-corner-all ui-state-default ui-widget"><span >Male</span>
-            </span>
-            
-            <span class="d-block">
-                <input placeholder="First Name" type="radio"
-                class="ui-inputtext ui-corner-all ui-state-default ui-widget"><span >Female</span> 
-            </span> 
-        </div>
-        <div class="col-md-6 mb-2">
-            <label class="d-block">Email</label>
-            <input placeholder="Email" type="email"
-                class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-        </div>
-        <div class="col-md-6 mb-2">
-            <label class="d-block">Address</label>
-            <input placeholder="address" type="text"
-                class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-        </div>
-        <div class="col-md-6 mb-2">
-            <label class="d-block">City</label>
-            <input placeholder="City" type="text"
-                class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-        </div>
-        <div class="col-md-6 mb-2">
-            <label class="d-block">State</label>
-            <select placeholder="select City" class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-                <option>Guntur</option>
-                <option>Vijayawada</option>
-                <option>Vizag</option>
-            </select>
-        </div>
+        
 
 
 
