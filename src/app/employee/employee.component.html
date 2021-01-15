@@ -2,68 +2,18 @@
     <div class="card p-3 mt-2">
         <div class="row col-md-12">
             <div class="col-md-6 mb-2 task">
-                <label class="d-block">First Name</label>
-                <input placeholder="First Name"
-                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-            </div>
-            <div class="col-md-6 mb-2 task">
-                <label class="d-block">Last Name</label>
-                <input placeholder="Last Name"
-                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-            </div>
-    
-            <div class="col-md-6 mb-2">
-                <label class="d-block">Gender</label>
-                <span class="d-block">
-                    <input type="radio" id="male" name="gender" value="male">
-                    <span >Male</span>
-                </span>
-                
-                <span class="d-block">
-                    <input type="radio" id="female" name="gender" value="female"><span >Female</span> 
-                </span> 
-            </div>
-            <div class="col-md-6 mb-2 task">
-                <label class="d-block">Email</label>
-                <input placeholder="Email" type="email"
-                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-            </div>
-            <div class="col-md-6 mb-2 task">
-                <label class="d-block">Address</label>
-                <input placeholder="address" type="text"
-                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-            </div>
-            <div class="col-md-6 mb-2 task">
-                <label class="d-block">City</label>
-                <input placeholder="City" type="text"
-                    class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-            </div>
-            <div class="col-md-6 mb-2 task">
-                <label class="d-block">State</label>
-                <select placeholder="select City" class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
-                    <option>Guntur</option>
-                    <option>Vijayawada</option>
-                    <option>Vizag</option>
-                </select>
+                <label class="d-block">Enter Application No</label>
+                <input placeholder="Application Number" [(ngModel)]="applicationNo" class="ui-inputtext ui-corner-all ui-state-default ui-widget w-60">
             </div>
             <div class="col-md-3 text-center mt-4">
-                <button class="save_btn" (click)="saveEmps()">{{isEdit?'Update':'Save'}}</button>
-                &nbsp;&nbsp; <button class="save_btn" (click)="clear()">Clear</button>
+                <button class="save_btn" (click)="searchApp()">Search</button>&nbsp;&nbsp;
+                <button class="save_btn" (click)="refresh()">Refresh</button>
             </div>
         </div>
-        
-
-
-
-
-
-
-
     </div>
 
     <div class="mt-2">
-
-        <p-table [columns]="cols" [value]="empValues" [paginator]="true" [rows]="10">
+        <p-table [columns]="cols" [value]="appValues" [paginator]="true" [rows]="10">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
@@ -91,6 +41,6 @@
 </div>
 <div class="row col-md-12">
     <form>
-       
+
     </form>
 </div>

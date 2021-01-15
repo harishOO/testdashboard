@@ -1,24 +1,12 @@
 <div class="container-fluid">
   <div class="row headerheight">
     <mat-toolbar class="background">
-      <mat-toolbar-row>
-        <label>Customer Management</label>
-      </mat-toolbar-row>
+      <span>Logo</span><span>Fullstack App</span><span style="font-size: small;">V6.21</span>
     </mat-toolbar>
   </div>
   <div class="row appbody">
     <div class="col-md-12 sideNavRow ">
       <mat-drawer-container class="example-container " autosize>
-        <mat-drawer  #drawer class="example-sidenav " mode="side">
-          <ul class="nav flex-column margins pading_style">
-            <li class="nav-item" *ngFor="let item of sidenavElements">
-              <div class="nav-link"  routerLinkActive="active"
-                [routerLink]="[item.routerLink]" href="javascript:void(0)" (click)="tabId=item.id;decrease();">
-                 <span >{{item.name}}</span><span class="mt-1"></span>
-              </div>
-            </li>
-          </ul>
-        </mat-drawer>
         <router-outlet></router-outlet>
       </mat-drawer-container>
     </div>
